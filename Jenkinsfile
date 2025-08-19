@@ -1,27 +1,27 @@
 pipeline {
-    agent any   // Run on any available Jenkins agent
+agent any
+stages {
+stage('Build') {
+steps {
+echo 'Building the application...'
+// Add your build commands here (e.g., mvn clean
 
-    stages {
-        stage('Clone') {
-            steps {
-                echo 'Cloning repository...'
-                git branch: 'main', url: 'https://github.com/shena-1>/my-first-repo.git'
-            }
-        }
-        stage('Build') {
-            steps {
-                echo 'Building project...'
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Running tests...'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying application...'
-            }
-        }
-    }
+install)
+}
+}
+stage('Test') {
+steps {
+echo 'Running tests...'
+// Add your test commands here (e.g., mvn test)
+}
+}
+stage('Deploy') {
+steps {
+echo 'Deploying the application...'
+// Add your deployment commands here (e.g., deploy
+
+to S3, ECS, etc.)
+}
+}
+}
 }
