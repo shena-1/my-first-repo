@@ -2,26 +2,17 @@ pipeline {
     agent any
 
     stages {
-        stage('Install Java') {
-            steps {
-                sh '''
-                    apt-get update -y
-                    apt-get install -y openjdk-11-jdk
-                '''
-            }
-        }
-
         stage('Build') {
             steps {
-                echo 'Building project...'
-                sh 'echo "Simulating build step..."'
+                echo 'Building the project...'
+                sh 'javac HelloWorld.java'
             }
         }
 
         stage('Test') {
             steps {
                 echo 'Running tests...'
-                sh 'java -version'
+                sh 'java HelloWorld'
             }
         }
 
@@ -32,3 +23,4 @@ pipeline {
         }
     }
 }
+
