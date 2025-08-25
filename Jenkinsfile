@@ -5,8 +5,8 @@ pipeline {
         stage('Install Java') {
             steps {
                 sh '''
-                    sudo apt-get update -y
-                    sudo apt-get install -y openjdk-11-jdk
+                    apt-get update -y
+                    apt-get install -y openjdk-11-jdk
                 '''
             }
         }
