@@ -1,27 +1,34 @@
 pipeline {
-agent any
-stages {
-stage('Build') {
-steps {
-echo 'Building the application...'
-// Add your build commands here (e.g., mvn clean
+    agent any
 
-install)
-}
-}
-stage('Test') {
-steps {
-echo 'Running tests...'
-// Add your test commands here (e.g., mvn test)
-}
-}
-stage('Deploy') {
-steps {
-echo 'Deploying the application...'
-// Add your deployment commands here (e.g., deploy
+    stages {
+        stage('Install Java') {
+            steps {
+                sh '''
+                    sudo apt-get update -y
+                    sudo apt-get install -y openjdk-11-jdk
+                '''
+            }
+        }
 
-to S3, ECS, etc.)
-}
-}
-}
+        stage('Build') {
+            steps {
+                echo 'Building project...'
+                sh 'echo "Simulating build step..."'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo 'Running tests...'
+                sh 'java -version'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo 'Deploying application...'
+            }
+        }
+    }
 }
